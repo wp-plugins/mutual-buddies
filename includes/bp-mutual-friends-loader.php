@@ -23,7 +23,7 @@ class BP_Mutual_Friends_Component extends BP_Component {
 
 		parent::start(
 			'mutual-friends',
-			_x( 'Mutual Friend Connections', 'Mutual Friends screen page <title>', 'buddypress' ),
+			_x( 'Mutual Friend Connections', 'Mutual Friends screen page <title>', 'bmf' ),
 			BP_MUTUAL_FRIENDS_PLUGIN_DIR
 		);
 
@@ -111,8 +111,8 @@ class BP_Mutual_Friends_Component extends BP_Component {
 		$count    = bmf_mutual_friend_total_count();
 		$class    = ( 0 === $count ) ? 'no-count' : 'count';
 		$main_nav = array(
-			'name'                => sprintf( __( 'Mutual Friends <span class="%s">%s</span>', 'buddypress' ), esc_attr( $class ), bp_core_number_format( $count ) ),
-			'slug'                => BP_MUTUAL_FRIENDS_SLUG,
+			'name'                => sprintf( __( 'Mutual Friends <span class="%s">%s</span>', 'bmf' ), esc_attr( $class ), bp_core_number_format( $count ) ),
+			'slug'                => bmf_get_mutual_friends_slug(),
 			'position'            => 60,
 			'screen_function'     => 'bp_mutual_friends_screen',
 			'default_subnav_slug' => 'my-mutual-friends',
@@ -121,10 +121,10 @@ class BP_Mutual_Friends_Component extends BP_Component {
 
 		// Add the subnav items to the mutual-friends nav item
 		$sub_nav[] = array(
-			'name'            => _x( 'Mutual Friends', 'Friends screen sub nav', 'buddypress' ),
+			'name'            => _x( 'Mutual Friends', 'Friends screen sub nav', 'bmf' ),
 			'slug'            => 'my-mutual-friends',
 			'parent_url'      => $mutual_friends_link,
-			'parent_slug'     => BP_MUTUAL_FRIENDS_SLUG,
+			'parent_slug'     => bmf_get_mutual_friends_slug(),
 			'screen_function' => 'bp_my_mutual_friends_screen',
 			'position'        => 10
 		);
